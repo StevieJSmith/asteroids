@@ -23,9 +23,10 @@ def main():
    Shot.containers = (shots, updatable, drawable)
 
    print(f"Starting asteroids!")
-   print(f"Screen width: {SCREEN_WIDTH}")
-   print(f"Screen height: {SCREEN_HEIGHT}")
+   #print(f"Screen width: {SCREEN_WIDTH}")
+   #print(f"Screen height: {SCREEN_HEIGHT}")
 
+   kill_count = 0
    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
    while True:
@@ -39,13 +40,15 @@ def main():
       for asteroid in asteroids:
          if asteroid.collision(player):
             print("Game Over!")
+            print(f"Final score: {kill_count}!")
             pygame.quit()
 
       for asteroid in asteroids:
          for shot in shots:
             if shot.collision(asteroid):
                shot.kill()
-               asteroid.kill()
+               asteroid.split()
+               kill_count += 1
 
       dt = clock.tick(60) / 1000
 
