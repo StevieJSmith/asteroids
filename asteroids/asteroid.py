@@ -1,5 +1,7 @@
 from circleshape import CircleShape
 import pygame
+from constants import ASTEROID_MIN_RADIUS, ASTEROID_MAX_RADIUS
+import random
 
 class Asteroid(CircleShape):
    def __init__(self, x, y, radius):
@@ -17,3 +19,4 @@ class Asteroid(CircleShape):
    def update(self, dt):
       self.position += self.velocity * dt
       self.rect.center = self.position
+

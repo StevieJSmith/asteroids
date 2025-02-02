@@ -43,8 +43,10 @@ class Player(CircleShape, pygame.sprite.Sprite):
       if keys[pygame.K_s]:
          self.move(-dt)
       if keys[pygame.K_SPACE]:
-         self.shoot()
+         if self.timer <= 0:
+            self.shoot()
       self.draw()
+      self.timer -= dt
 
 
    def move(self, dt):
